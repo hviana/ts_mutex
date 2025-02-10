@@ -21,7 +21,7 @@ shoppingCartMutex.runExclusive(async () => {
 ## All imports
 
 ```typescript
-import { Mutex, ReleaseFunction } from "https://deno.land/x/ts_mutex/mod.ts";
+import { Mutex, ReleaseFunction } from "jsr:@hviana/ts-mutex";
 ```
 
 ## About
