@@ -19,7 +19,7 @@ export class Mutex {
    * Wait until the lock is acquired.
    * @returns A function that releases the acquired lock.
    */
-  acquire() {
+  acquire(): Promise<ReleaseFunction> {
     return new Promise<ReleaseFunction>((resolve) => {
       this._queue.push({ resolve });
       this._dispatch();
@@ -34,7 +34,7 @@ export class Mutex {
    * @param callback Function to be run exclusively.
    * @returns The return value of `callback`.
    */
-  async runExclusive<T>(callback: () => Promise<T>) {
+  async runExclusive<T>(callback: () => Promise<T>): Promise<any> {
     const release = await this.acquire();
     try {
       return await callback();
